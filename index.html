@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Review Slider</title>
+
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
+</head>
+<body>
+  <div class="container">
+    <div class="image-container">
+      <div class="image-slide-container">
+        <img 
+          src="./assets/sample1.jpeg" 
+          style="width:100%" 
+          class="image-review fade"
+        >
+      </div>
+      <div class="image-slide-container">
+        <img 
+          src="./assets/sample2.jpeg" 
+          style="width:100%" 
+          class="image-review fade"
+        >
+      </div>
+      <div class="image-slide-container">
+        <img 
+          src="./assets/sample3.jpeg" 
+          style="width:100%" 
+          class="image-review fade"
+        >
+      </div>
+    </div>
+
+    <div class="review-container">
+      <h1>Reviews</h1>
+      <hr class="title-line">
+      <div class="text-slide-container">
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+
+        <div class="detail-review">
+          <h3>Best PRICE</h3>
+          <i class="fas fa-quote-right"></i>
+          <p class="text-review">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed pulvibar elit quis lacus dapibus, at efficitur ligula blandit. 
+            Phasellus dignissim et lorem vitae gravida. Nulam magna lacus, aliquam vel.
+          </p>
+          <h3 class="text-review"> - Peter Amar One</h3>
+        </div>
+        
+        <div class="detail-review">
+          <h3>Good Condition</h3>
+          <i class="fas fa-quote-right"></i>
+          <p class="text-review">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          </p>
+          <h3 class="text-review"> - Peter Amar Two</h3>
+        </div>
+        
+        <div class="detail-review">
+          <h3>Fresh</h3>
+          <i class="fas fa-quote-right"></i>
+          <p class="text-review">
+            Lorem ipsum dolor sit amet. Urna id volutpat lacus laoreet non. Ut tellus elementum sagittis vitae.
+          </p>
+          <h3 class="text-review"> - Peter Amar Three</h3>
+        </div>
+
+        <a class="next" onclick="plusSlides(1)">❯</a>
+      </div>
+      <br />
+      
+      <div class="dot-container">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let index = 1;
+    showSlides(index);
+    
+    function plusSlides(n) {
+      showSlides(index += n);
+    }
+    
+    function currentSlide(n) {
+      showSlides(index = n);
+    }
+    
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("image-review");
+      let detail = document.getElementsByClassName("detail-review")
+      let dots = document.getElementsByClassName("dot");
+
+      if (n > slides.length) {index = 1}    
+      if (n < 1) {index = slides.length}
+
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+        detail[i].style.display = "none";
+      }
+
+      for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+      }
+
+      slides[index-1].style.display = "block";
+      detail[index-1].style.display = "block";
+      dots[index-1].className += " active";
+    }
+  </script>
+</body>
+</html>
